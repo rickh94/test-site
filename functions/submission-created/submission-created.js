@@ -1,5 +1,6 @@
 exports.handler = (event, context, callback) => {
   body = JSON.parse(event.body)
+  console.log(body)
   console.log("email", body.data.email)
   console.log("name", body.data.name)
   console.log("choice", body.data.winner)
