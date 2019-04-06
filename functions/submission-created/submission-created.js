@@ -7,12 +7,14 @@ const tableName = process.env.TABLE_NAME
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body).payload
   const { email, name, winner } = body.data
+  const dateCreated = Date.parse(body.created_at)
 
   const base = new Airtable({apiKey}).base(baseID)
   base(tableName).create({
     Email: email,
     Name: name,
-    Choice: parseInt(winner)
+    Choice: parseInt(winner),
+    'Date Created': dateCreated.toDateString()
   }, function(err, record) {
     if (err) {
       console.error(err)
