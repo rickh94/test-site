@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,30 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
 </head>
+
 <body>
-  <h1>This is a test site. you probably don't need it</h1>
+  <h1>Test Form</h1>
+  <form name="test" data-netlify="true" method="post">
+    <p>
+      <label for="name">Enter Name:</label>
+      <input type="text" name="name" id="name">
+    </p>
+    <p>
+      <label for="email">Enter Email:</label>
+      <input type="text" email="email" id="email">
+    </p>
+    <p>
+      <label for="winner">Select a Winner: </label>
+      <select name="winner[]" id="winner">
+        <option value="first-winner">Annmarie Akhbar</option>
+        <option value="second-winner">Vivek Ingvar</option>
+        <option value="third-winner">Kyriake Asil</option>
+      </select>
+    </p>
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+  </form>
 </body>
+
 </html>
