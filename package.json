@@ -5,6 +5,6 @@
     "clean": "rm -rf functions-build && mkdir functions-build",
     "zip": "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
     "postzip": "mv functions/submission-created/submission-created.zip functions-build",
-    "build": "npm run clean && npm run zip"
+    "build": "yarn run clean && yarn run zip"
   }
 }
