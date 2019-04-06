@@ -12,7 +12,7 @@ exports.handler = (event, context, callback) => {
   base(tableName).create({
     Email: email,
     Name: name,
-    Choice: winner
+    Choice: parseInt(winner)
   }, function(err, record) {
     if (err) {
       console.error(err)
