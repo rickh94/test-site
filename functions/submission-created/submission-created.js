@@ -1,5 +1,5 @@
 const Airtable = require('airtable')
-const firebase = required('firebase')
+const firebase = require('firebase')
 
 const atApiKey = process.env.AIRTABLE_API_KEY
 const baseID = process.env.AIRTABLE_BASE_ID
