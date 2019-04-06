@@ -1,5 +1,5 @@
 [build]
 functions = "functions-build"
-command = "yarn run build"
+command = "npm install yarn && yarn run build"
 publish = "dist"
 NODE_ENV = "8.11.3"
