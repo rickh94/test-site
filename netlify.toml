@@ -1,5 +1,5 @@
 [build]
 functions = "functions-build"
 command = "npm i yarn && yarn run zip"
-publish = "dist"
+# publish = "."
 NODE_ENV = "10.15.3"
