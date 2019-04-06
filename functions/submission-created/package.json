@@ -2,5 +2,8 @@
   "name": "submission-created",
   "version": "1.0.0",
   "main": "submission-created.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.5.10"
+  }
 }
