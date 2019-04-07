@@ -18,7 +18,8 @@
 
 <body>
   <h1>Test Form</h1>
-  <form name="test" data-netlify="true" method="post" action="/success">
+  <div id="error"></div>
+  <form id="contest-form" name="test" data-netlify="true" method="post" action="/success">
     <p>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name">
@@ -30,28 +31,32 @@
     <p>
       Select a Winner:
       <div>
-        <input type="radio" id="winner1" name="winner" value="Annmarie Akhbar">
-        <label for="winner1">Annmarie Akhbar</label>
+        <input type="radio" id="candidate-0" name="winner" value="">
+        <label for="candidate-0" id="candidate-0-label"></label>
 
         <br>
-        <input type="radio" id="winner2" name="winner" value="Vivek Ingvar">
-        <label for="winner2">Vivek Ingvar</label>
+        <input type="radio" id="candidate-1" name="winner" value="">
+        <label for="candidate-1" id="candidate-1-label"></label>
 
         <br>
-        <input type="radio" id="winner3" name="winner" value="Kyriake Asil">
-        <label for="winner3">Kyriake Asil</label>
+        <input type="radio" id="candidate-2" name="winner" value="">
+        <label for="candidate-2" id="candidate-2-label"></label>
 
         <br>
-        <input type="radio" id="winner4" name="winner" value="Jakob Victor">
-        <label for="winner4">Jakob Victor</label>
+        <input type="radio" id="candidate-3" name="winner" value="">
+        <label for="candidate-3" id="candidate-3-label"></label>
 
         <br>
-        <input type="radio" id="winner5" name="winner" value="Natille Tessa">
-        <label for="winner5">Natille Tessa</label>
+        <input type="radio" id="candidate-4" name="winner" value="">
+        <label for="candidate-4" id="candidate-4-label"></label>
 
         <br>
-        <input type="radio" id="winner6" name="winner" value="Anabela Bernardino">
-        <label for="winner6">Anabela Bernardino</label>
+        <input type="radio" id="candidate-5" name="winner" value="">
+        <label for="candidate-5" id="candidate-5-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-6" name="winner" value="">
+        <label for="candidate-6" id="candidate-6-label"></label>
       </div>
     </p>
     <p>
@@ -62,4 +67,21 @@
 
 </html>
 
-<!-- <script src="fillcandidates.js"></script> -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('https://pensive-wing-d910bb.netlify.com/.netlify/functions/candidates',
+      { mode: 'cors', headers: new Headers({ 'Access-Control-Allow-Origin': '*' }) })
+      .then(res => res.json())
+      .catch(err => {
+        document.getElementById('error').appendChild(document.createTextNode(`Something has gone wrong: ${err}`))
+      })
+      .then(candidates => {
+        candidates.forEach((candidate, idx) => {
+          const label = document.getElementById(`candidate-${idx}-label`)
+          const input = document.getElementById(`candidate-${idx}`)
+          label.textContent = candidate
+          input.value = candidate
+        })
+      })
+  })
+</script>

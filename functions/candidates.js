@@ -6,6 +6,7 @@ const candidates = [
     'Natille Tessa',
     'Anabela Bernardino'
 ]
+
 exports.handler = function(event, context, callback) {
   return callback(null, {
     statusCode: 200,
