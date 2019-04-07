@@ -1,22 +1,6 @@
 const Airtable = require('airtable')
-const AWS = required('aws-sdk')
-// const firebase = require('firebase')
-
-const atApiKey = process.env.AIRTABLE_API_KEY
-const baseID = process.env.AIRTABLE_BASE_ID
-const tableName = process.env.TABLE_NAME
-
-// const fbConfig = {
-//   apiKey: process.env.FIREBASE_API_KEY,
-//   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-//   databaseURL: process.env.FIREBASE_DATABASE_URL,
-//   projectId: process.env.FIREBASE_PROJECT_ID,
-//   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-//   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
-// }
-
-// const app = firebase.initializeApp(fbConfig)
-// const db = firebase.database()
+const AWS = require('aws-sdk')
+const uuid = require('uuid/v4')
 
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body).payload
@@ -32,31 +16,16 @@ exports.handler = (event, context, callback) => {
 
   let err = []
 
-  const base = new Airtable({apiKey: atApiKey}).base(baseID)
-  base(tableName).create(newData, function(atError, record) {
-    if (atError) {
-      err.push(atError)
-      // callback(null, {
-      //   statusCode: err.status,
-      //   body: err.message,
-      //   error: err
-      // })
-      // } else {
-      // callback(null, {
-      //   statusCode: 200,
-      //   body: 'No worries, all is working fine'
-      // })
-    }
-  })
+  let atError = sendToAirtable(email, name, choice, dateCreated)
+  if (atError) {
+    err.push(atError)
+  }
 
-  // const newResultKey = db.ref().child('results').push().key
-  // db.ref(`/results/${newResultKey}`).set(newData, fbErr => {
-  //   if (err) {
-  //     err.push(fbErr)
-  //   } else {
-  //     return
-  //   }
-  // })
+
+  let dynamoError = sendToDynamo(email, name, choice, dateCreated)
+  if (dynamoError) {
+    err.push(dynamoError)
+  }
 
   if (err.length !== 0) {
     console.log(err)
@@ -68,8 +37,73 @@ exports.handler = (event, context, callback) => {
   } else {
     return callback(null, {
       statusCode: 201,
-      body: "Records have been created"
+      body: 'Records have been created'
     })
   }
+}
 
+function sendToDynamo(email, name, choice, date) {
+  const dynamodb = new AWS.DynamoDB({
+    apiVersion: '2012-08-10',
+    region: 'us-east-1',
+    accessKeyId: process.env.DYNAMO_ACCESS_KEY_ID,
+    secretAccessKey: process.env.DYNAMO_SECRET_ACCESS_KEY
+  })
+
+  const params = {
+    Item: {
+      uuid: {
+        S: `${uuid()}`
+      },
+      Email: {
+        S: email
+      },
+      Name: {
+        S: name
+      }, 
+      Choice: {
+        S: choice
+      },
+      'Date Created': {
+        S: date.toDateString()
+      }
+    },
+    TableName: process.env.DYNAMO_TABLE_NAME
+  }
+
+  let err 
+  dynamodb.putItem(params, (dynamoErr, data) => {
+    if (dynamoErr) {
+      err = dynamoErr
+    } else {
+      console.log(data)
+    }
+  })
+
+  return err
+
+}
+
+function sendToAirtable(email, name, choice, date) {
+  const atApiKey = process.env.AIRTABLE_API_KEY
+  const baseID = process.env.AIRTABLE_BASE_ID
+  const tableName = process.env.TABLE_NAME
+
+  const base = new Airtable({ apiKey: atApiKey }).base(baseID)
+
+  const newData = {
+    Email: email,
+    Name: name,
+    Choice: choice,
+    'Date Created': date.toDateString()
+  }
+
+  let err
+  base(tableName).create(newData, function(atError, record) {
+    if (atError) {
+      err = atError
+    }
+  })
+
+  return err
 }
