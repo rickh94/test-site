@@ -7,22 +7,15 @@ exports.handler = (event, context, callback) => {
   const { email, name, winner } = body.data
   const dateCreated = new Date(body.created_at)
 
-  const newData = {
-    Email: email,
-    Name: name,
-    Choice: parseInt(winner),
-    'Date Created': dateCreated.toDateString()
-  }
-
   let err = []
 
-  let atError = sendToAirtable(email, name, choice, dateCreated)
+  let atError = sendToAirtable(email, name, winner, dateCreated)
   if (atError) {
     err.push(atError)
   }
 
 
-  let dynamoError = sendToDynamo(email, name, choice, dateCreated)
+  let dynamoError = sendToDynamo(email, name, winner, dateCreated)
   if (dynamoError) {
     err.push(dynamoError)
   }
