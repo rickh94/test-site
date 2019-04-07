@@ -5,7 +5,7 @@
     "clean": "rm -rf functions-build && mkdir functions-build && rm -rf functions/submission-created/node_modules",
     "zip": "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
     "postzip": "mv functions/submission-created/submission-created.zip functions-build",
-    "build": "yarn run clean && yarn run zip"
+    "build": "yarn run clean && yarn run zip && yarn run parcel build"
   },
   "dependencies": {
     "progressbar": "^1.3.0"

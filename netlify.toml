@@ -1,6 +1,6 @@
 [build]
 functions = "functions-build"
-command = "npm i yarn && yarn global add grpc && yarn run build"
+command = "npm i yarn parcel && yarn run build"
 # publish = "."
 site = "dist"
 # NODE_ENV = "production"
