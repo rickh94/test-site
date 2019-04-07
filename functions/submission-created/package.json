@@ -6,7 +6,6 @@
   "dependencies": {
     "airtable": "^0.5.10",
     "firebase": "^5.9.3",
-    "firebase-tools": "^6.5.3",
     "grpc": "^1.19.0"
   }
 }
