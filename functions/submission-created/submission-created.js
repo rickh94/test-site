@@ -1,4 +1,5 @@
 const Airtable = require('airtable')
+const AWS = required('aws-sdk')
 // const firebase = require('firebase')
 
 const atApiKey = process.env.AIRTABLE_API_KEY

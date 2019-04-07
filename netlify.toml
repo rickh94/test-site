@@ -2,4 +2,4 @@
 functions = "functions-build"
 command = "npm i yarn && yarn global add grpc && yarn run build"
 # publish = "."
-# NODE_ENV = "10.15.3"
+# NODE_ENV = "production"

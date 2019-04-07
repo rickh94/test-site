@@ -4,6 +4,7 @@
   "main": "submission-created.js",
   "license": "MIT",
   "dependencies": {
-    "airtable": "^0.5.10"
+    "airtable": "^0.5.10",
+    "aws-sdk": "^2.437.0"
   }
 }
