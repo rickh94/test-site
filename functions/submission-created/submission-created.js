@@ -57,7 +57,7 @@ exports.handler = (event, context, callback) => {
   //   }
   // })
 
-  if (err.length() !== 0) {
+  if (length(err) !== 0) {
     console.log(err)
     return callback(null, {
       statusCode: err[0].status,
