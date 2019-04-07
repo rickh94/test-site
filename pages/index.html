@@ -66,6 +66,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const winnerDiv = document.getElementById('candidates')
     fetch('https://pensive-wing-d910bb.netlify.com/.netlify/functions/candidates',
       { mode: 'cors', headers: new Headers({ 'Access-Control-Allow-Origin': '*' }) })
       .then(res => res.json())
@@ -74,10 +75,9 @@
       })
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
-          const label = document.getElementById(`candidate-${idx}-label`)
-          const input = document.getElementById(`candidate-${idx}`)
-          label.textContent = candidate
-          input.value = candidate
+          winnerDiv.innerHTML += `<br>
+        <input type="radio" id="candidate-${idx}" name="winner" value="${candidate}">
+        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label>`
         })
       })
   })
