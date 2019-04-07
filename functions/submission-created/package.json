@@ -4,6 +4,6 @@
   "main": "submission-created.js",
   "license": "MIT",
   "dependencies": {
-    "airtable": "^0.5.10",
+    "airtable": "^0.5.10"
   }
 }
