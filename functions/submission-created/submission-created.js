@@ -6,6 +6,7 @@ exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body).payload
   const { email, name, winner } = body.data
   const dateCreated = new Date(body.created_at)
+  console.log(winner)
 
   let err = []
 

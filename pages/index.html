@@ -31,6 +31,29 @@
     <p>
       Select a Winner:
       <div id="candidates">
+        <input type="radio" id="candidate-0" name="winner" value="">
+        <label for="candidate-0" id="candidate-0-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-1" name="winner" value="">
+        <label for="candidate-1" id="candidate-1-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-2" name="winner" value="">
+        <label for="candidate-2" id="candidate-2-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-3" name="winner" value="">
+        <label for="candidate-3" id="candidate-3-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-4" name="winner" value="">
+        <label for="candidate-4" id="candidate-4-label"></label>
+
+        <br>
+        <input type="radio" id="candidate-5" name="winner" value="">
+        <label for="candidate-5" id="candidate-5-label"></label>
+
       </div>
     </p>
     <p>
@@ -52,7 +75,7 @@
       })
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
-          winnerDiv.innerHTML += `<br>
+        winnerDiv.innerHTML += `<br>
         <input type="radio" id="candidate-${idx}" name="winner" value="${candidate}">
         <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label>`
         })
