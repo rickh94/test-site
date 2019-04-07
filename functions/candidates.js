@@ -10,6 +10,7 @@ const candidates = [
 exports.handler = function(event, context, callback) {
   return callback(null, {
     statusCode: 200,
-    body: JSON.stringify(candidates)
+    body: JSON.stringify(candidates),
+    headers: {'Access-Control-Allow-Origin': '*'}
   })
 }
