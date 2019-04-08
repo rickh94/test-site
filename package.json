@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "clean":
-      "rm -rf functions-build && mkdir functions-build && rm -rf functions/{submission-created,current-standings}/node_modules",
+      "rm -rf functions-build && mkdir functions-build && rm -rf functions/{submission-created,current-standings}/node_modules && rm functions/current-standings/candidates.js",
     "zip-submission":
       "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
     "zip-current":
