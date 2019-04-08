@@ -20,13 +20,32 @@ const options = {
   }
 }
 
-const bar1 = new ProgressBar.Line('#choice1-votes', options)
-const bar2 = new ProgressBar.Line('#choice2-votes', options)
-const bar3 = new ProgressBar.Line('#choice3-votes', options)
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  bar1.animate(0.2)
-  bar2.animate(0.6)
-  bar3.animate(0.2)
+  const resultsDiv = document.getElementById('results')
+  fetch(
+    'https://pensive-wing-d910bb.netlify.com/.netlify/functions/current-standings',
+    { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) }
+  )
+    .then(res => res.json())
+    .catch(err => {
+      document
+        .getElementById('error')
+        .appendChild(document.createTextNode(`Something has gone wrong: ${err}`))
+    })
+    .then(results => {
+      document.getElementById('loading').style.display = 'none'
+      let i = 0
+      for (const candidate in results.candidates) {
+        const p = document.createElement('p')
+        p.appendChild(document.createTextNode(candidate))
+        const barDiv = document.createElement('div')
+        barDiv.id = `bar-${i}`
+        resultsDiv.appendChild(p)
+        resultsDiv.appendChild(barDiv)
+        const bar = new ProgressBar.Line(`#bar-${i}`, options)
+        i += 1
+        bar.animate(results.candidates[candidate] / results.totalVotes)
+      }
+    })
 })

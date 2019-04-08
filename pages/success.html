@@ -7,37 +7,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Test Form | Success</title>
   <!-- <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"> -->
+  <link rel="stylesheet" href="success.css">
 </head>
 
 <body>
   <h1>Thank you for your vote</h1>
-  <div class="results">
-    <p>
-      <h2>Leaders</h2>
-      <div>
-        <p>Annmarie Akhbar</p>
-        <div id="choice1-votes"></div>
-
-        <p>Vivek Ingvar</p>
-        <div id="choice2-votes"></div>
-
-        <p>Kyriake Asil</p>
-        <div id="choice3-votes"></div>
-
-        <p>Jakob Victor</p>
-        <div id="choice4-votes"></div>
-
-        <p>Natille Tessa</p>
-        <div id="choice5-votes"></div>
-
-        <p>Anabela Bernardino</p>
-        <div id="choice6-votes"></div>
+  <div id="error"></div>
+  <div>
+    <h2>Standings</h2>
+    <div id="loading">
+      <p>Loading Standings</p>
+      <div class="lds-ring" id>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-    </p>
-</div>
+
+    </div>
+    <div id="results">
+    </div>
+  </div>
 
 </body>
 
 </html>
 <script src="./success.js"></script>
-
