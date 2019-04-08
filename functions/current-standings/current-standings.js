@@ -44,6 +44,14 @@ async function countCandidates() {
 exports.handler = async function(event, context, callback) {
   try {
     const results = await countCandidates()
+    return callback(null, {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: JSON.stringify(results)
+    })
   } catch (err) {
     console.error(err)
     return callback(null, {
@@ -51,12 +59,4 @@ exports.handler = async function(event, context, callback) {
       body: 'Could not get standings data'
     })
   }
-  return callback(null, {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    },
-    body: JSON.stringify(results)
-  })
 }
