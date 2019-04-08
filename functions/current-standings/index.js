@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const candidates = require('../candidates')
+const candidates = require('./candidates')
 
 const dynamodb = new AWS.DynamoDB({
   apiVersion: '2012-08-10',

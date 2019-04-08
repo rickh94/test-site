@@ -7,7 +7,7 @@
     "zip-submission":
       "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
     "zip-current":
-      "cd functions/current-standings && yarn install && zip -r current-standings.zip *",
+      "cp functions/candidates.js functions/current-standings && cd functions/current-standings && yarn install && zip -r current-standings.zip *",
     "postzip-submission":
       "mv functions/submission-created/submission-created.zip functions-build",
     "postzip-current":
