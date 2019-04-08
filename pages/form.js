@@ -14,8 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
             candidates.forEach((candidate, idx) => {
                 winnerDiv.innerHTML += `<p>
         <div class="line">
-        <input type="radio" id="candidate-${idx}" name="winner" value="${candidate.name}">
-        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate.name}</label><div class="downArrow" data-index="${idx}"></div>
+          <label for="candidate-${idx}" id="candidate-${idx}-label" class="label-container">${candidate.name}
+            <input type="radio" id="candidate-${idx}" name="winner" value="${candidate.name}">
+            <span class="checkmark"></span>
+          </label>
+          <div class="downArrow" data-index="${idx}"></div>
         </div>
         <div id="bio-${idx}" style="display:none">${candidate.bio}</div>
         </p>`

@@ -1,6 +1,7 @@
 body {
   margin: 1vw 2vw;
-  font-family: sans-serif;
+  font-family: 'objectiv-mk1', sans-serif;
+  // background: #e6e6e6;
 }
 
 .container {
@@ -29,4 +30,84 @@ body {
 
 label {
   flex-basis: 75%;
+}
+
+.label-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.label-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.label-container:hover input ~ .checkmark {
+  // background-color:#901ed5;
+  background-color: rgba(144, 30, 213, 0.418);
+}
+
+.label-container input:checked ~ .checkmark {
+  background-color: rgb(144, 30, 213);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.label-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.label-container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.button {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2;
+  padding: 0 1.3rem;
+  border: 2px solid #ffb821;
+  background: #ffb821;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 5.2rem;
+  cursor: pointer;
+  transition: all .25s ease-out 0s;
+  &:hover {
+    border-color: #000;
+    color: #000;
+    background: transparent;
+    transform: scale(1.05);
+  }
 }
