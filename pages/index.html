@@ -8,34 +8,8 @@
   <title>Test Form</title>
   <!-- <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="index.scss">
   <style>
-    body {
-      margin: 1vw 2vw;
-      font-family: sans-serif;
-    }
-    .container {
-      max-width: 768px;
-    }
-    .downArrow {
-      border-bottom: 1px solid #000;
-      border-right: 1px solid #000;
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg)
-    }
-    .upArrow {
-      border-bottom: 1px solid #000;
-      border-right: 1px solid #000;
-      width: 8px;
-      height: 8px;
-      transform: rotate(-135deg)
-    }
-    .line {
-      display: flex;
-    }
-    label {
-      flex-basis: 80%;
-    }
   </style>
 </head>
 
@@ -53,8 +27,7 @@
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
       </p>
-      <div class="upArrow"></div>
-      <p>
+     <p>
         Select a Winner:
         <div id="candidates">
           <input type="hidden" name="winner" />
@@ -70,25 +43,4 @@
 
 </html>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const winnerDiv = document.getElementById('candidates')
-    fetch('https://form.temptestsites.online/.netlify/functions/candidates',
-      { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) })
-      .then(res => res.json())
-      .catch(err => {
-        document.getElementById('error').appendChild(document.createTextNode(`Something has gone wrong: ${err}`))
-      })
-      .then(candidates => {
-        candidates.forEach((candidate, idx) => {
-          winnerDiv.innerHTML += `<p>
-        <div class="line">
-        <input type="radio" id="candidate-${idx}" name="winner" value="${candidate.name}">
-        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate.name}</label><div class="downArrow"></div>
-        </div>
-        <div id="bio-${idx}">${candidate.bio}</div>
-        </p>`
-        })
-      })
-  })
-</script>
+<script src="./form.js"></script>
