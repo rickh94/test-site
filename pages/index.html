@@ -54,9 +54,9 @@
       })
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
-          winnerDiv.innerHTML += `<br>
+          winnerDiv.innerHTML += `<p>
         <input type="radio" id="candidate-${idx}" name="winner" value="${candidate}">
-        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label>`
+        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label></p>`
         })
       })
   })
