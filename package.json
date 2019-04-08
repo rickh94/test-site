@@ -14,7 +14,7 @@
       "mv functions/current-standings/current-standings.zip functions-build",
     "copy-raw-js": "cp functions/*.js functions-build",
     "zip": "yarn run zip-submission && yarn run zip-current",
-    "build": "yarn run clean && yarn run zip && yarn run parcel build pages/*.html"
+    "build": "yarn run clean && yarn run zip && yarn run copy-raw-js && yarn run parcel build pages/*.html"
   },
   "dependencies": {
     "parcel": "^1.12.3",
