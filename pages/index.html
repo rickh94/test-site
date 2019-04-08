@@ -13,32 +13,59 @@
       margin: 1vw 2vw;
       font-family: sans-serif;
     }
+    .container {
+      max-width: 768px;
+    }
+    .downArrow {
+      border-bottom: 1px solid #000;
+      border-right: 1px solid #000;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg)
+    }
+    .upArrow {
+      border-bottom: 1px solid #000;
+      border-right: 1px solid #000;
+      width: 8px;
+      height: 8px;
+      transform: rotate(-135deg)
+    }
+    .line {
+      display: flex;
+    }
+    label {
+      flex-basis: 80%;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Test Form</h1>
-  <div id="error"></div>
-  <form id="contest-form" name="test" data-netlify="true" method="post" netlify-honeypot="bot-field" action="/success">
-    <p>
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name">
-    </p>
-    <p>
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required>
-    </p>
-    <p>
-      Select a Winner:
-      <div id="candidates">
-        <input type="hidden" name="winner" />
+  <div class="container">
+    <h1>Test Form</h1>
+    <div id="error"></div>
+    <form id="contest-form" name="test" data-netlify="true" method="post" netlify-honeypot="bot-field"
+      action="/success">
+      <p>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+      </p>
+      <p>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+      </p>
+      <div class="upArrow"></div>
+      <p>
+        Select a Winner:
+        <div id="candidates">
+          <input type="hidden" name="winner" />
 
-      </div>
-    </p>
-    <p>
-      <button type="submit">Submit</button>
-    </p>
-  </form>
+        </div>
+      </p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+  </div>
 </body>
 
 </html>
@@ -55,8 +82,10 @@
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
           winnerDiv.innerHTML += `<p>
+        <div class="line">
         <input type="radio" id="candidate-${idx}" name="winner" value="${candidate.name}">
-        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate.name}</label>
+        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate.name}</label><div class="downArrow"></div>
+        </div>
         <div id="bio-${idx}">${candidate.bio}</div>
         </p>`
         })
