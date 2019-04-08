@@ -25,6 +25,7 @@ const bar2 = new ProgressBar.Line('#choice2-votes', options)
 const bar3 = new ProgressBar.Line('#choice3-votes', options)
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   bar1.animate(0.2)
   bar2.animate(0.6)
   bar3.animate(0.2)

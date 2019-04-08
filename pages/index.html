@@ -47,14 +47,14 @@
   document.addEventListener('DOMContentLoaded', () => {
     const winnerDiv = document.getElementById('candidates')
     fetch('https://pensive-wing-d910bb.netlify.com/.netlify/functions/candidates',
-      { mode: 'cors', headers: new Headers({ 'Access-Control-Allow-Origin': '*' }) })
+      { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) })
       .then(res => res.json())
       .catch(err => {
         document.getElementById('error').appendChild(document.createTextNode(`Something has gone wrong: ${err}`))
       })
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
-        winnerDiv.innerHTML += `<br>
+          winnerDiv.innerHTML += `<br>
         <input type="radio" id="candidate-${idx}" name="winner" value="${candidate}">
         <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label>`
         })

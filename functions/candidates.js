@@ -1,4 +1,4 @@
-const candidates = [
+export const candidates = [
     'Annmarie Akhbar',
     'Vivek Ingvar',
     'Kyriake Asil',

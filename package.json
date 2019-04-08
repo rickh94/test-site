@@ -3,8 +3,13 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf functions-build && mkdir functions-build && rm -rf functions/submission-created/node_modules",
-    "zip": "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
-    "postzip": "mv functions/submission-created/submission-created.zip functions/candidates.js functions-build",
+    "zip-submission": "cd functions/submission-created && yarn install && zip -r submission-created.zip *",
+    "zip-current": "cd functions/current-standings && yarn install && zip -r current-standings.zip *",
+    "postzip-submission": "mv functions/submission-created/submission-created.zip functions-build",
+    "postzip-current": "mv functions/current-standings/current-standings.zip functions-build",
+    "copy-raw-js": "cp functions/*.js functions-build",
+    "zip": "yarn run zip-submission && yarn run zip-current",
+    "postzip": "yarn run postzip-submission && yarn run postzip-current",
     "build": "yarn run clean && yarn run zip && yarn run parcel build pages/*.html"
   },
   "dependencies": {
