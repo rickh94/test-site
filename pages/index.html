@@ -46,7 +46,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const winnerDiv = document.getElementById('candidates')
-    fetch('https://pensive-wing-d910bb.netlify.com/.netlify/functions/candidates',
+    fetch('https://form.temptestsites.online/.netlify/functions/candidates',
       { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) })
       .then(res => res.json())
       .catch(err => {
@@ -55,8 +55,8 @@
       .then(candidates => {
         candidates.forEach((candidate, idx) => {
           winnerDiv.innerHTML += `<p>
-        <input type="radio" id="candidate-${idx}" name="winner" value="${candidate}">
-        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate}</label></p>`
+        <input type="radio" id="candidate-${idx}" name="winner" value="${candidate.name}">
+        <label for="candidate-${idx}" id="candidate-${idx}-label">${candidate.name}</label></p>`
         })
       })
   })

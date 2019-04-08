@@ -24,7 +24,7 @@ const options = {
 document.addEventListener('DOMContentLoaded', () => {
   const resultsDiv = document.getElementById('results')
   fetch(
-    'https://pensive-wing-d910bb.netlify.com/.netlify/functions/current-standings',
+    'https://form.temptestsites.online/.netlify/functions/current-standings',
     { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) }
   )
     .then(res => res.json())

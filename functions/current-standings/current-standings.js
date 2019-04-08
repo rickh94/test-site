@@ -33,9 +33,9 @@ async function countCandidates() {
   }
 
   for (candidate of candidates.candidates) {
-    const data = await countCandidate(candidate)
+    const data = await countCandidate(candidate.name)
     const votes = data.Count
-    results.candidates[candidate] = votes
+    results.candidates[candidate.name] = votes
     results.totalVotes += votes
   }
   return results
