@@ -43,7 +43,7 @@ async function countCandidates() {
 
 exports.handler = async function(event, context, callback) {
   try {
-    const results = await coundCandidates()
+    const results = await countCandidates()
   } catch (err) {
     console.error(err)
     return callback(null, {
