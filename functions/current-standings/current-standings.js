@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-// const candidates = require('./candidates')
+const candidates = require('./candidates')
 
 const dynamodb = new AWS.DynamoDB({
   apiVersion: '2012-08-10',
@@ -26,14 +26,14 @@ function countCandidate(name) {
   return dynamodb.scan(params).promise()
 }
 
-async function coundCandidates() {
+async function countCandidates() {
   const results = {
     candidates: {},
     totalVotes: 0
   }
 
   for (candidate of candidates.candidates) {
-    const data = await coundCandidate(candidate)
+    const data = await countCandidate(candidate)
     const votes = data.Count
     results.candidates[candidate] = votes
     results.totalVotes += votes
