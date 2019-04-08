@@ -1,4 +1,4 @@
-export const candidates = [
+const candidates = [
     'Annmarie Akhbar',
     'Vivek Ingvar',
     'Kyriake Asil',
@@ -14,3 +14,5 @@ exports.handler = function(event, context, callback) {
     body: JSON.stringify(candidates)
   })
 }
+
+exports.candidates = candidates
