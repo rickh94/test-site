@@ -43,26 +43,38 @@ class ContestForm extends Component {
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
             <h1>Test form react</h1>
+            <table className="form-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <label className="primary-label">Name:</label>
+                  </td>
+                  <td>
+                    <Field
+                      name="name"
+                      component="input"
+                      type="text"
+                      placeholder="Enter name..."
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="primary-label">Email:</label>
+                  </td>
+                  <td>
+                    <Field
+                      name="email"
+                      component="input"
+                      type="email"
+                      placeholder="Enter email..."
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <div>
-              <label>Name</label>
-              <Field
-                name="name"
-                component="input"
-                type="text"
-                placeholder="Enter name..."
-              />
-            </div>
-            <div>
-              <label>Email</label>
-              <Field
-                name="email"
-                component="input"
-                type="email"
-                placeholder="Enter email..."
-              />
-            </div>
-            <div>
-              <label>Select Winner</label>
+              <label><h4>Select Winner</h4></label>
               {candidates.map(candidate => (
                 <div key={candidate.id}>
                   <Candidate bio={candidate.bio}>
@@ -75,7 +87,6 @@ class ContestForm extends Component {
                       />{' '}
                       {candidate.name}
                       <span className="checkmark" />
-                      /> */}
                     </label>
                   </Candidate>
                 </div>
