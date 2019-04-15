@@ -91,10 +91,12 @@ label {
   background: white;
 }
 
+
 .button {
   font-size: 1rem;
   font-weight: 500;
   line-height: 2;
+  margin: 0.5rem 3rem;
   padding: 0 1.3rem;
   border: 2px solid #ffb821;
   background: #ffb821;
@@ -110,4 +112,14 @@ label {
     background: transparent;
     transform: scale(1.05);
   }
+  &:disabled {
+    pointer-events: none;
+    background: rgb(255, 184, 33, 0.8);
+    border: none;
+  }
+}
+
+
+.bio {
+  margin-bottom: 1vh;
 }
