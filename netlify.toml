@@ -3,3 +3,8 @@ functions = "functions-build"
 command = "yarn run build"
 # publish = "."
 # NODE_ENV = "production"
+
+[[redirects]]
+from = "/*"
+to = "https://form.temptestsites.online/:splat"
+force = true

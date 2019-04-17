@@ -1,7 +1,29 @@
 body {
   margin: 1vw 2vw;
   font-family: 'objectiv-mk1', sans-serif;
+  font-size: 22px;
   // background: #e6e6e6;
+}
+
+.form-table {
+  width: 100%;
+  td {
+    padding-bottom: 2vh;
+  }
+}
+
+.primary-label {
+  font-weight: 500;
+}
+
+input {
+  padding: 4px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  &:focus {
+    border: 1px solid #ffb821;
+    line-height: 1.15;
+  }
 }
 
 .container {
@@ -64,12 +86,11 @@ label {
 }
 
 .label-container:hover input ~ .checkmark {
-  // background-color:#901ed5;
-  background-color: rgba(144, 30, 213, 0.418);
+  background-color: rgb(255, 184, 33, 0.418);
 }
 
 .label-container input:checked ~ .checkmark {
-  background-color: rgb(144, 30, 213);
+  background-color: rgb(255, 184, 33);
 }
 
 .checkmark:after {
@@ -91,10 +112,12 @@ label {
   background: white;
 }
 
+
 .button {
   font-size: 1rem;
   font-weight: 500;
   line-height: 2;
+  margin: 0.5rem 3rem;
   padding: 0 1.3rem;
   border: 2px solid #ffb821;
   background: #ffb821;
@@ -110,4 +133,14 @@ label {
     background: transparent;
     transform: scale(1.05);
   }
+  &:disabled {
+    pointer-events: none;
+    background: rgb(255, 184, 33, 0.8);
+    border: none;
+  }
+}
+
+
+.bio {
+  margin-bottom: 2vh;
 }
