@@ -12,10 +12,12 @@
     "build": "yarn run clean && yarn run zip && yarn run copy-raw-js && yarn run parcel build pages/*.html"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "parcel": "^1.12.3",
     "progressbar.js": "^1.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^9.5.1",
     "cssnano": "^4.1.10",
     "sass": "^1.17.4"
   }
