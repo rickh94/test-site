@@ -10,7 +10,6 @@ class ContestForm extends Component {
 
   state = {
     candidates: [],
-    shownBios: []
   }
 
   async componentDidMount() {
@@ -23,20 +22,9 @@ class ContestForm extends Component {
       .then(candidates => this.setState({ candidates }))
   }
 
-  bioIsShown = id => {
-    return this.state.shownBios.includes(id)
-  }
-
-  toggleBio = id => {
-    this.setState(oldState => {
-      if (oldState.shownBios.includes(id)) {
-        return { shownBios: oldState.shownBios.splice(oldState.shownBios.indexOf()) }
-      }
-    })
-  }
-
   render() {
     const { candidates } = this.state
+
     return (
       <Form
         onSubmit={this.onSubmit}
