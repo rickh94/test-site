@@ -18,15 +18,26 @@
     <div id="error"></div>
     <form id="contest-form" name="test" data-netlify="true" method="post" netlify-honeypot="bot-field"
       action="/success">
-      <p>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-      </p>
-      <p>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-      </p>
-     <p>
+      <table class="form-table">
+        <tbody>
+          <tr>
+            <td>
+              <label for="name">Name:</label>
+            </td>
+            <td>
+              <input type="text" name="name" id="name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="email">Email:</label>
+            </td>
+            <td>
+              <input type="email" name="email" id="email" required>
+            </td>
+          </tr>
+        </tbody>
+      </table>
         Select a Winner:
         <div id="candidates" class="control-group">
           <input type="hidden" name="winner" />
@@ -35,6 +46,7 @@
       </p>
       <p>
         <button type="submit" class="button">Submit</button>
+        <button id="reset" type="reset" class="button">Reset</button>
       </p>
     </form>
   </div>
