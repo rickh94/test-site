@@ -23,6 +23,7 @@ const options = {
 
 document.addEventListener('DOMContentLoaded', () => {
   const resultsDiv = document.getElementById('results')
+  // URL HARDCODE
   fetch(
     'https://form.temptestsites.online/.netlify/functions/current-standings',
     { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) }

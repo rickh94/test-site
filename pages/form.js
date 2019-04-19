@@ -1,8 +1,8 @@
 import { parse } from 'csv'
 document.addEventListener('DOMContentLoaded', () => {
   const winnerDiv = document.getElementById('candidates')
+  // URL HARDCODE
     fetch('https://form.temptestsites.online/candidates.csv', {
-  // fetch('http://localhost:1234/candidates.csv', {
     mode: 'cors',
     headers: new Headers({ 'Content-Type': 'application/json' })
   })
