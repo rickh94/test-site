@@ -37,7 +37,7 @@ async function countCandidates() {
     candidates: {},
     totalVotes: 0
   }
-  const candidates = parse(candidateCsv.text(), { columns: true })
+  const candidates = parse(candidateCsv.data, { columns: true })
 
   for (candidate of candidates) {
     const data = await countCandidate(candidate.name)
