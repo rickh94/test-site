@@ -36,3 +36,4 @@ exports.handler = function(event, context, callback) {
 }
 
 exports.candidates = candidates
+
