@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk')
-const candidates = require('./candidates')
+const parse = require('csv-parse/lib/sync')
+const axios = require('axios')
 
 const dynamodb = new AWS.DynamoDB({
   apiVersion: '2012-08-10',
@@ -27,12 +28,18 @@ function countCandidate(name) {
 }
 
 async function countCandidates() {
+  // URL HARDCODE
+  const candidateCsv = await axios.get(
+    'https://form.temptestsites.online/candidates.csv'
+  )
+
   const results = {
     candidates: {},
     totalVotes: 0
   }
+  const candidates = parse(candidateCsv.text(), { columns: true })
 
-  for (candidate of candidates.candidates) {
+  for (candidate of candidates) {
     const data = await countCandidate(candidate.name)
     const votes = data.Count
     results.candidates[candidate.name] = votes

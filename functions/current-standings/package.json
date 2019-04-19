@@ -4,6 +4,8 @@
   "main": "current-standings.js",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.437.0"
+    "aws-sdk": "^2.437.0",
+    "axios": "^0.18.0",
+    "csv": "^5.1.1"
   }
 }
